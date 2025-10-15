@@ -1,0 +1,267 @@
+Sudden Death (1995)|1.5|1
+Under Siege 2: Dark Territory (1995)|3.5|1
+Braveheart (1995)|1.5|1
+Friday (1995)|0.5|1
+Die Hard: With a Vengeance (1995)|2.5|1
+Father of the Bride Part II (1995)|0.5|1
+Balto (1995)|3.5|1
+Jumanji (1995)|0.5|1
+Apollo 13 (1995)|5.0|1
+Pocahontas (1995)|1.0|1
+Bad Boys (1995)|1.5|1
+Clueless (1995)|4.5|1
+Under Siege 2: Dark Territory (1995)|2.0|5
+Desperado (1995)|3.5|5
+Balto (1995)|0.0|5
+Braveheart (1995)|1.0|5
+Tommy Boy (1995)|1.5|5
+Waterworld (1995)|2.5|5
+Father of the Bride Part II (1995)|2.5|5
+Toy Story (1995)|1.5|5
+Ace Ventura: When Nature Calls (1995)|2.0|6
+Balto (1995)|4.0|6
+The Indian in the Cupboard (1995)|0.0|6
+Heat (1995)|3.5|6
+Waiting to Exhale (1995)|4.5|6
+Braveheart (1995)|3.0|6
+Waterworld (1995)|1.5|6
+Braveheart (1995)|1.0|7
+Ace Ventura: When Nature Calls (1995)|3.5|7
+Father of the Bride Part II (1995)|4.5|7
+Sudden Death (1995)|1.5|7
+Desperado (1995)|2.0|7
+Toy Story (1995)|1.0|7
+Clueless (1995)|3.0|8
+Braveheart (1995)|3.5|8
+Desperado (1995)|4.0|8
+Die Hard: With a Vengeance (1995)|2.0|8
+The Indian in the Cupboard (1995)|3.5|8
+Ace Ventura: When Nature Calls (1995)|4.5|11
+Waiting to Exhale (1995)|0.5|11
+Pocahontas (1995)|0.0|11
+Under Siege 2: Dark Territory (1995)|1.5|11
+Tom and Huck (1995)|3.5|11
+Jumanji (1995)|0.0|11
+The Indian in the Cupboard (1995)|0.0|14
+GoldenEye (1995)|0.5|14
+Friday (1995)|2.0|14
+Apollo 13 (1995)|4.0|14
+Ace Ventura: When Nature Calls (1995)|1.5|14
+Desperado (1995)|4.0|14
+Toy Story (1995)|0.5|14
+Tommy Boy (1995)|4.0|14
+Bad Boys (1995)|4.0|14
+Grumpier Old Men (1995)|1.5|14
+Waiting to Exhale (1995)|0.0|14
+Pocahontas (1995)|5.0|14
+Sudden Death (1995)|0.5|15
+Die Hard: With a Vengeance (1995)|3.5|15
+The Indian in the Cupboard (1995)|3.5|15
+Tommy Boy (1995)|1.5|15
+Billy Madison (1995)|5.0|15
+Bad Boys (1995)|1.0|15
+Desperado (1995)|1.5|15
+Pocahontas (1995)|3.5|17
+Friday (1995)|4.0|17
+The Indian in the Cupboard (1995)|4.0|17
+Apollo 13 (1995)|4.0|17
+Tommy Boy (1995)|5.0|17
+Under Siege 2: Dark Territory (1995)|1.0|17
+Desperado (1995)|0.0|17
+Heat (1995)|3.0|17
+Clueless (1995)|4.5|17
+Braveheart (1995)|2.5|17
+GoldenEye (1995)|4.0|17
+Grumpier Old Men (1995)|4.5|17
+Braveheart (1995)|0.5|18
+Heat (1995)|5.0|18
+Waiting to Exhale (1995)|3.5|18
+Grumpier Old Men (1995)|5.0|18
+Friday (1995)|5.0|18
+Clueless (1995)|3.5|18
+Tom and Huck (1995)|1.0|18
+Under Siege 2: Dark Territory (1995)|3.5|18
+Die Hard: With a Vengeance (1995)|3.5|18
+Jumanji (1995)|3.0|18
+GoldenEye (1995)|4.0|18
+The Indian in the Cupboard (1995)|2.0|18
+Die Hard: With a Vengeance (1995)|1.5|19
+Waiting to Exhale (1995)|5.0|19
+Bad Boys (1995)|1.0|19
+Clueless (1995)|3.5|19
+Friday (1995)|5.0|19
+Tom and Huck (1995)|1.0|19
+Braveheart (1995)|4.5|19
+Pocahontas (1995)|1.0|19
+Father of the Bride Part II (1995)|4.0|19
+GoldenEye (1995)|1.0|19
+Desperado (1995)|3.5|19
+Grumpier Old Men (1995)|0.0|19
+Grumpier Old Men (1995)|2.0|20
+Friday (1995)|2.5|20
+Waterworld (1995)|1.0|20
+Father of the Bride Part II (1995)|0.0|20
+Billy Madison (1995)|3.0|20
+Sudden Death (1995)|1.0|20
+Heat (1995)|2.0|21
+GoldenEye (1995)|2.5|21
+Waterworld (1995)|1.0|21
+Sudden Death (1995)|0.5|21
+The Indian in the Cupboard (1995)|1.0|21
+Ace Ventura: When Nature Calls (1995)|3.0|21
+Friday (1995)|1.0|21
+Balto (1995)|1.0|23
+Jumanji (1995)|1.0|23
+Braveheart (1995)|1.5|23
+Ace Ventura: When Nature Calls (1995)|3.0|23
+Sudden Death (1995)|4.5|23
+Billy Madison (1995)|3.5|23
+GoldenEye (1995)|3.5|23
+Waiting to Exhale (1995)|1.5|23
+Toy Story (1995)|2.5|23
+Waterworld (1995)|4.0|23
+Die Hard: With a Vengeance (1995)|3.0|24
+Balto (1995)|2.0|24
+Waiting to Exhale (1995)|0.5|24
+Sudden Death (1995)|4.5|24
+The Indian in the Cupboard (1995)|2.0|24
+Ace Ventura: When Nature Calls (1995)|5.0|24
+Ace Ventura: When Nature Calls (1995)|3.5|26
+Clueless (1995)|5.0|26
+Tom and Huck (1995)|1.0|26
+Father of the Bride Part II (1995)|0.5|26
+Die Hard: With a Vengeance (1995)|3.0|26
+Billy Madison (1995)|1.5|26
+Ace Ventura: When Nature Calls (1995)|2.0|31
+Tommy Boy (1995)|2.5|31
+Toy Story (1995)|1.0|31
+Jumanji (1995)|3.5|31
+Grumpier Old Men (1995)|1.5|31
+Tom and Huck (1995)|2.0|31
+Die Hard: With a Vengeance (1995)|3.0|31
+Desperado (1995)|0.0|31
+Apollo 13 (1995)|0.5|31
+Bad Boys (1995)|4.5|31
+Heat (1995)|0.0|31
+Pocahontas (1995)|0.5|31
+Grumpier Old Men (1995)|2.0|32
+Sudden Death (1995)|2.5|32
+Toy Story (1995)|0.0|32
+Heat (1995)|1.0|32
+Clueless (1995)|4.5|32
+Braveheart (1995)|4.0|32
+Apollo 13 (1995)|0.5|32
+Ace Ventura: When Nature Calls (1995)|3.5|42
+Clueless (1995)|2.5|42
+Tommy Boy (1995)|1.0|42
+Under Siege 2: Dark Territory (1995)|4.0|42
+Die Hard: With a Vengeance (1995)|1.0|42
+Jumanji (1995)|3.0|42
+Desperado (1995)|0.5|42
+Waiting to Exhale (1995)|2.5|42
+Toy Story (1995)|0.5|42
+GoldenEye (1995)|0.0|42
+Bad Boys (1995)|2.5|42
+Desperado (1995)|3.5|43
+Tommy Boy (1995)|1.0|43
+Grumpier Old Men (1995)|3.0|43
+Heat (1995)|2.0|43
+Waiting to Exhale (1995)|3.0|43
+Bad Boys (1995)|3.0|43
+Sudden Death (1995)|4.0|43
+Pocahontas (1995)|3.0|43
+Ace Ventura: When Nature Calls (1995)|5.0|43
+GoldenEye (1995)|3.0|43
+Father of the Bride Part II (1995)|4.5|43
+Clueless (1995)|1.5|43
+Under Siege 2: Dark Territory (1995)|4.5|58
+Clueless (1995)|0.5|58
+Pocahontas (1995)|1.5|58
+The Indian in the Cupboard (1995)|2.5|58
+Waiting to Exhale (1995)|4.0|58
+Billy Madison (1995)|4.0|58
+Father of the Bride Part II (1995)|0.0|58
+Toy Story (1995)|0.5|58
+Tom and Huck (1995)|2.0|58
+GoldenEye (1995)|2.5|58
+Ace Ventura: When Nature Calls (1995)|2.0|58
+GoldenEye (1995)|0.0|66
+Friday (1995)|1.0|66
+Billy Madison (1995)|1.5|66
+Sudden Death (1995)|2.0|66
+Waiting to Exhale (1995)|2.0|66
+Apollo 13 (1995)|0.5|66
+Heat (1995)|4.0|66
+Pocahontas (1995)|4.0|66
+Jumanji (1995)|2.0|66
+Under Siege 2: Dark Territory (1995)|4.0|66
+Father of the Bride Part II (1995)|3.0|66
+Pocahontas (1995)|4.5|151
+Braveheart (1995)|2.0|151
+Ace Ventura: When Nature Calls (1995)|4.0|151
+Sudden Death (1995)|4.0|151
+Grumpier Old Men (1995)|4.0|151
+The Indian in the Cupboard (1995)|5.0|162
+Apollo 13 (1995)|5.0|162
+Die Hard: With a Vengeance (1995)|3.0|162
+Ace Ventura: When Nature Calls (1995)|3.5|162
+Clueless (1995)|1.0|162
+Heat (1995)|2.5|162
+GoldenEye (1995)|2.5|162
+Desperado (1995)|4.0|179
+Waterworld (1995)|2.0|179
+Jumanji (1995)|5.0|179
+Bad Boys (1995)|4.0|179
+Grumpier Old Men (1995)|1.5|179
+Under Siege 2: Dark Territory (1995)|3.0|179
+Father of the Bride Part II (1995)|4.5|179
+Balto (1995)|4.5|217
+Pocahontas (1995)|1.5|217
+Desperado (1995)|4.0|217
+Billy Madison (1995)|1.5|217
+Grumpier Old Men (1995)|5.0|217
+Clueless (1995)|1.0|217
+Tom and Huck (1995)|4.5|217
+GoldenEye (1995)|1.5|269
+Heat (1995)|3.0|269
+Apollo 13 (1995)|0.0|269
+Sudden Death (1995)|0.5|269
+Waiting to Exhale (1995)|4.5|269
+Friday (1995)|0.0|269
+Balto (1995)|4.0|269
+Under Siege 2: Dark Territory (1995)|5.0|269
+Toy Story (1995)|0.0|269
+Jumanji (1995)|0.0|269
+Desperado (1995)|4.5|269
+Ace Ventura: When Nature Calls (1995)|3.0|270
+Pocahontas (1995)|4.0|270
+Billy Madison (1995)|3.5|270
+Tommy Boy (1995)|0.0|270
+The Indian in the Cupboard (1995)|2.5|270
+Clueless (1995)|1.0|270
+Grumpier Old Men (1995)|4.0|270
+Under Siege 2: Dark Territory (1995)|5.0|270
+Balto (1995)|1.5|270
+Die Hard: With a Vengeance (1995)|0.0|270
+Friday (1995)|3.5|337
+Toy Story (1995)|0.0|337
+Bad Boys (1995)|4.5|337
+Billy Madison (1995)|4.5|337
+Under Siege 2: Dark Territory (1995)|0.5|337
+GoldenEye (1995)|4.5|337
+Balto (1995)|2.0|337
+Waterworld (1995)|0.5|337
+Die Hard: With a Vengeance (1995)|2.5|337
+Clueless (1995)|4.0|372
+Waterworld (1995)|3.5|372
+Billy Madison (1995)|2.5|372
+Tom and Huck (1995)|2.5|372
+The Indian in the Cupboard (1995)|4.5|372
+Grumpier Old Men (1995)|5.0|372
+Apollo 13 (1995)|5.0|372
+Braveheart (1995)|4.5|414
+Waiting to Exhale (1995)|0.5|414
+Jumanji (1995)|3.0|414
+Ace Ventura: When Nature Calls (1995)|0.0|414
+Desperado (1995)|2.0|414
+Bad Boys (1995)|0.0|414
