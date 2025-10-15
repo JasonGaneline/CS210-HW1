@@ -12,24 +12,6 @@ Due Date: 10/17/25
 import sys
 from statistics import mean
 
-import tkinter as tk
-from tkinter import filedialog
-
-# Added function to select file using a dialog (OPTIONAL)
-def select_file():
-    """
-    Opens a file dialog in a separate thread so it doesn't block the CLI.
-    Returns the selected file path as a string, or None if cancelled.
-    """  
-    root = tk.Tk()
-    root.withdraw()
-
-    file_path = filedialog.askopenfilename(
-        title="Select a text file",
-        filetypes=[("Text Files", "*.txt"), ("All Files", "*.*")]
-    )
-
-    return file_path # return the chosen path
 
 # Data storage
 movies = {}       # movie_name -> {"id": id, "genre": genre}
@@ -278,27 +260,25 @@ def main_menu():
 
         # --- Load movies file ---
         if choice == "1":
-            print("Select the movies file using the file browser...")
-            path = select_file()
-            if path:
+            path = input("Enter the path to your movies file: ").strip()
+            try:
                 movies = load_movies_file(path)
                 print("📁 Movies file loaded successfully.")
                 if movies and ratings:
                     print("✅ All data files are loaded. You can use all features.\n")
-            else:
-                print("No file selected.")
+            except FileNotFoundError:
+                print("❌ File not found. Please check your path and try again.")
 
         # --- Load ratings file ---
         elif choice == "2":
-            print("Select the ratings file using the file browser...")
-            path = select_file()
-            if path:
+            path = input("Enter the path to your ratings file: ").strip()
+            try:
                 ratings, user_ratings = load_ratings_file(path)
                 print("📁 Ratings file loaded successfully.")
                 if movies and ratings:
                     print("✅ All data files are loaded. You can use all features.\n")
-            else:
-                print("No file selected.")
+            except FileNotFoundError:
+                print("❌ File not found. Please check your path and try again.")
 
         # --- Top N movies ---
         elif choice == "3":
