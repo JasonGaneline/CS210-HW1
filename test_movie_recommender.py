@@ -85,6 +85,15 @@ def capture_output(func, *args, **kwargs):
         sys.stdout = sys_stdout
     return buffer.getvalue().strip()
 
+def silent_call(func, *args, **kwargs):
+    """Run a function silently by discarding printed output."""
+    buffer = io.StringIO()
+    sys_stdout = sys.stdout
+    sys.stdout = buffer
+    try:
+        return func(*args, **kwargs)
+    finally:
+        sys.stdout = sys_stdout
 
 def print_result(test_name, actual, expected):
     """Pretty print test comparison."""
@@ -102,36 +111,36 @@ def run_tests():
     files = create_test_files()
 
     # --- Test 1: load_movies_file (normal) ---
-    movies = mr.load_movies_file(files["movies_normal"])
+    movies = silent_call(mr.load_movies_file, files["movies_normal"])
     print_result("load_movies_file (normal)", len(movies), 3)
 
     # --- Test 2: load_movies_file (bad input) ---
-    movies_bad = mr.load_movies_file(files["movies_bad"])
+    movies_bad = silent_call(mr.load_movies_file, files["movies_bad"])
     print_result("load_movies_file (bad input)", len(movies_bad), 0)
 
     # --- Test 3: duplicate titles ---
-    movies_dup = mr.load_movies_file(files["movies_dup"])
+    movies_dup = silent_call(mr.load_movies_file, files["movies_dup"])
     print_result("duplicate titles", len(movies_dup), 1)
 
     # --- Test 4: empty movies file ---
-    movies_empty = mr.load_movies_file(files["movies_empty"])
+    movies_empty = silent_call(mr.load_movies_file, files["movies_empty"])
     print_result("empty movies file", movies_empty, {})
 
     # --- Test 5: load_ratings_file (normal) ---
-    ratings, user_ratings = mr.load_ratings_file(files["ratings_normal"])
+    ratings, user_ratings = silent_call(mr.load_ratings_file, files["ratings_normal"])
     print_result("load_ratings_file (normal) - movies rated", len(ratings), 3)
     print_result("load_ratings_file (normal) - users found", len(user_ratings), 3)
 
     # --- Test 6: load_ratings_file (bad) ---
-    ratings_bad, _ = mr.load_ratings_file(files["ratings_bad"])
+    ratings_bad, _ = silent_call(mr.load_ratings_file, files["ratings_bad"])
     print_result("load_ratings_file (bad input)", len(ratings_bad), 0)
 
     # --- Test 7: negative ratings ---
-    ratings_neg, _ = mr.load_ratings_file(files["ratings_negative"])
+    ratings_neg, _ = silent_call(mr.load_ratings_file, files["ratings_negative"])
     print_result("negative ratings - valid entries", list(ratings_neg.keys()), ["Inception"])
 
     # --- Test 8: empty ratings file ---
-    ratings_empty, user_ratings_empty = mr.load_ratings_file(files["ratings_empty"])
+    ratings_empty, user_ratings_empty = silent_call(mr.load_ratings_file, files["ratings_empty"])
     print_result("empty ratings file - ratings", ratings_empty, {})
     print_result("empty ratings file - user ratings", user_ratings_empty, {})
 
@@ -154,12 +163,12 @@ def run_tests():
     print_result("top_n_genres (print check)", "Top 3 Genres" in output, True)
 
     # --- Test 13: user_favorite_genre ---
-    fav = mr.user_favorite_genre(1, movies, user_ratings)
+    fav = silent_call(mr.user_favorite_genre, 1, movies, user_ratings)
     print_result("user_favorite_genre (user 1)", fav in ("action", "romance"), True)
 
     # --- Test 14: user_favorite_genre with unknown movie ---
     fake_user_ratings = {1: {"Unknown Movie": 4.0}}
-    fav = mr.user_favorite_genre(1, movies, fake_user_ratings)
+    fav = silent_call(mr.user_favorite_genre, 1, movies, fake_user_ratings)
     print_result("user_favorite_genre (unknown movie)", fav, None)
 
     # --- Test 15: recommend_movies ---
@@ -171,17 +180,16 @@ def run_tests():
     print_result("recommend_movies (unknown user)", "Could not determine" in output, True)
 
     # --- Test 17: check_data_loaded ---
-    print_result("check_data_loaded (valid)", mr.check_data_loaded(movies, ratings), True)
-    print_result("check_data_loaded (missing movies)", mr.check_data_loaded({}, ratings), False)
-    print_result("check_data_loaded (missing ratings)", mr.check_data_loaded(movies, {}), False)
-    print_result("check_data_loaded (missing both)", mr.check_data_loaded({}, {}), False)
+    print_result("check_data_loaded (valid)", silent_call(mr.check_data_loaded, movies, ratings), True)
+    print_result("check_data_loaded (missing movies)", silent_call(mr.check_data_loaded, {}, ratings), False)
+    print_result("check_data_loaded (missing ratings)", silent_call(mr.check_data_loaded, movies, {}), False)
+    print_result("check_data_loaded (missing both)", silent_call(mr.check_data_loaded, {}, {}), False)
 
     # --- Test 18: FileNotFoundError handling ---
     output = capture_output(mr.load_movies_file, "nonexistent_file.txt")
     print_result("FileNotFoundError handling", "not found" in output.lower(), True)
 
     print("\n🎉 ALL TESTS FINISHED 🎉")
-
 
 if __name__ == "__main__":
     run_tests()
