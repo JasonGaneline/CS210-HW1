@@ -292,8 +292,16 @@ def main_menu():
         elif choice == "5":
             if not check_data_loaded(movies, ratings):
                 continue
+            unique_genres = set(data["genre"] for data in movies.values())
+            max_genres = len(unique_genres)
             try:
-                n = int(input("Enter number of top genres to display: "))
+                n = int(input(f"Enter number of top genres to display (max {max_genres}): "))
+                if n <= 0:
+                    print("❌ Please enter a positive integer.")
+                    continue
+                if n > max_genres:
+                    print(f"⚠️ You requested more genres than available. Showing top {max_genres} genres instead.")
+                    n = max_genres
                 top_n_genres(movies, ratings, n)
             except ValueError:
                 print("❌ Please enter a valid number.")
