@@ -24,16 +24,22 @@ user_ratings = {} # user_id -> dict of movie_name -> rating
 # ------------------------------
 def load_movies_file(filename):
     movies = {}
+    total_lines = 0
+    skipped_lines = 0
+
     try:
         with open(filename, 'r', encoding='utf-8') as f:
             for line_num, line in enumerate(f, start=1):
+                total_lines += 1
                 line = line.strip()
                 if not line:
-                    continue  # Skip empty lines
+                    skipped_lines += 1
+                    continue
 
                 parts = line.split('|')
                 if len(parts) != 3:
                     print(f"Skipping line {line_num}: wrong number of fields -> {line}")
+                    skipped_lines += 1
                     continue
 
                 try:
@@ -43,33 +49,45 @@ def load_movies_file(filename):
 
                     if title in movies:
                         print(f"Skipping line {line_num}: duplicate movie title '{title}'")
+                        skipped_lines += 1
                         continue
 
                     movies[title] = {"id": movie_id, "genre": genre}
 
                 except ValueError:
                     print(f"Skipping line {line_num}: invalid movie ID -> {line}")
+                    skipped_lines += 1
                     continue
+
+        return movies, total_lines, skipped_lines
+
     except FileNotFoundError:
         print(f"Error: Movies file '{filename}' not found.")
+        return None, 0, 0
     except Exception as e:
         print(f"Unexpected error while loading movies: {e}")
-    return movies
+        return None, 0, 0
 
 
 def load_ratings_file(filename):
     ratings = {}
     user_ratings = {}
+    total_lines = 0
+    skipped_lines = 0
+
     try:
         with open(filename, 'r', encoding='utf-8') as f:
             for line_num, line in enumerate(f, start=1):
+                total_lines += 1
                 line = line.strip()
                 if not line:
-                    continue  # skip blank lines
+                    skipped_lines += 1
+                    continue
 
                 parts = line.split('|')
                 if len(parts) != 3:
                     print(f"Skipping line {line_num}: wrong number of fields -> {line}")
+                    skipped_lines += 1
                     continue
 
                 try:
@@ -77,27 +95,27 @@ def load_ratings_file(filename):
                     rating = float(parts[1])
                     user_id = int(parts[2])
 
-                    # Validate rating range
                     if not (0 <= rating <= 5):
                         print(f"Skipping line {line_num}: invalid rating '{rating}' -> {line}")
+                        skipped_lines += 1
                         continue
 
-                    # Add to movie ratings
                     ratings.setdefault(movie_name, []).append(rating)
-
-                    # Add to user ratings
                     user_ratings.setdefault(user_id, {})[movie_name] = rating
 
                 except ValueError:
                     print(f"Skipping line {line_num}: invalid numeric value -> {line}")
+                    skipped_lines += 1
                     continue
+
+        return ratings, user_ratings, total_lines, skipped_lines
 
     except FileNotFoundError:
         print(f"Error: Ratings file '{filename}' not found.")
+        return None, None, 0, 0
     except Exception as e:
         print(f"Unexpected error while loading ratings: {e}")
-
-    return ratings, user_ratings
+        return None, None, 0, 0
 
 
 # ------------------------------
@@ -256,28 +274,35 @@ def main_menu():
 
         if choice == "1":
             path = input("Enter the path to your movies file: ").strip()
-            movies = load_movies_file(path)
-            if movies:
-                print(f"📁 Movies file loaded successfully. ({len(movies)} movies)")
+            movies, total_lines, skipped_lines = load_movies_file(path)
+            if movies is None or skipped_lines == total_lines:
+                print("❌ Could not read movies file. Please make sure you have uploaded the correct file.")
             else:
-                print("⚠️  No movies loaded. Please check the file path or file format.")
+                print(f"📁 Movies file loaded successfully ({total_lines - skipped_lines} of {total_lines} lines loaded).")
+            if (movies and ratings):
+                print("✅ Both movies and ratings files are loaded. You can now use all features.")
 
         elif choice == "2":
             path = input("Enter the path to your ratings file: ").strip()
-            ratings, user_ratings = load_ratings_file(path)
-            if ratings and user_ratings:
-                print(f"📁 Ratings file loaded successfully. ({len(ratings)} movies rated)")
+            ratings, user_ratings, total_lines, skipped_lines = load_ratings_file(path)
+            if ratings is None or skipped_lines == total_lines:
+                print("❌ Could not read ratings file. Please make sure you have uploaded the correct file.")
             else:
-                print("⚠️  No ratings loaded. Please check the file path or file format.")
+                print(f"📁 Ratings file loaded successfully ({total_lines - skipped_lines} of {total_lines} lines loaded).")
+            if (movies and ratings):
+                print("✅ Both movies and ratings files are loaded. You can now use all features.")
 
         elif choice == "3":
             if not check_data_loaded(movies, ratings):
                 continue
             try:
                 n = int(input("Enter number of top movies to display: "))
+                if n <= 0:
+                    print("❌ Please enter a positive integer.")
+                    continue
                 top_n_movies(movies, ratings, n)
             except ValueError:
-                print("❌ Please enter a valid number.")
+                print("❌ Invalid input. Please enter an integer value.")
 
         elif choice == "4":
             if not check_data_loaded(movies, ratings):
@@ -285,18 +310,29 @@ def main_menu():
             genre = input("Enter genre name: ").strip()
             try:
                 n = int(input("Enter number of top movies to display: "))
+                if n <= 0:
+                    print("❌ Please enter a positive integer.")
+                    continue
                 top_n_movies_in_genre(movies, ratings, genre, n)
             except ValueError:
-                print("❌ Please enter a valid number.")
+                print("❌ Invalid input. Please enter an integer value.")
 
         elif choice == "5":
             if not check_data_loaded(movies, ratings):
                 continue
+            unique_genres = set(data["genre"] for data in movies.values())
+            max_genres = len(unique_genres)
             try:
-                n = int(input("Enter number of top genres to display: "))
+                n = int(input(f"Enter number of top genres to display (max {max_genres}): "))
+                if n <= 0:
+                    print("❌ Please enter a positive integer.")
+                    continue
+                if n > max_genres:
+                    print(f"⚠️ You requested more genres than available. Showing top {max_genres} genres instead.")
+                    n = max_genres
                 top_n_genres(movies, ratings, n)
             except ValueError:
-                print("❌ Please enter a valid number.")
+                print("❌ Invalid input. Please enter an integer value.")
 
         elif choice == "6":
             if not check_data_loaded(movies, ratings):
@@ -307,7 +343,7 @@ def main_menu():
                 if fav:
                     print(f"🎭 User {uid}'s favorite genre is: {fav.title()}")
             except ValueError:
-                print("❌ Please enter a valid user ID (number).")
+                print("❌ Invalid input. Please enter an integer for the user ID.")
 
         elif choice == "7":
             if not check_data_loaded(movies, ratings):
@@ -316,14 +352,15 @@ def main_menu():
                 uid = int(input("Enter user ID: "))
                 recommend_movies(movies, ratings, user_ratings, uid)
             except ValueError:
-                print("❌ Please enter a valid user ID (number).")
+                print("❌ Invalid input. Please enter an integer for the user ID.")
 
         elif choice == "8":
             print("🍿 Thank you for using Movie Recommender!")
             break
 
         else:
-            print("❌ Invalid choice. Please try again.")
+            print("❌ Invalid choice. Please enter a number between 1 and 8.")
+
 
 
 if __name__ == "__main__":
