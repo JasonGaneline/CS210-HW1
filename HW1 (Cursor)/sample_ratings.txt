@@ -1,0 +1,103 @@
+Die Hard (1988)|4.5|user1
+Die Hard (1988)|4.0|user2
+Die Hard (1988)|4.8|user3
+Terminator 2: Judgment Day (1991)|4.7|user1
+Terminator 2: Judgment Day (1991)|4.2|user2
+Terminator 2: Judgment Day (1991)|4.9|user4
+Mad Max: Fury Road (2015)|4.6|user1
+Mad Max: Fury Road (2015)|4.1|user3
+Mad Max: Fury Road (2015)|4.3|user5
+John Wick (2014)|4.4|user2
+John Wick (2014)|4.6|user4
+John Wick (2014)|4.2|user5
+The Matrix (1999)|4.8|user1
+The Matrix (1999)|4.7|user3
+The Matrix (1999)|4.9|user4
+The Hangover (2009)|3.8|user1
+The Hangover (2009)|4.2|user2
+The Hangover (2009)|3.9|user3
+Superbad (2007)|4.0|user1
+Superbad (2007)|4.1|user2
+Superbad (2007)|3.8|user4
+Anchorman (2004)|3.7|user2
+Anchorman (2004)|3.9|user3
+Anchorman (2004)|3.6|user5
+Dumb and Dumber (1994)|3.5|user1
+Dumb and Dumber (1994)|3.8|user2
+Dumb and Dumber (1994)|3.4|user4
+Ghostbusters (1984)|4.1|user1
+Ghostbusters (1984)|4.3|user3
+Ghostbusters (1984)|4.0|user5
+The Shawshank Redemption (1994)|4.9|user1
+The Shawshank Redemption (1994)|4.8|user2
+The Shawshank Redemption (1994)|4.9|user3
+The Shawshank Redemption (1994)|4.7|user4
+The Shawshank Redemption (1994)|4.8|user5
+Forrest Gump (1994)|4.6|user1
+Forrest Gump (1994)|4.4|user2
+Forrest Gump (1994)|4.5|user3
+Forrest Gump (1994)|4.3|user4
+The Godfather (1972)|4.8|user1
+The Godfather (1972)|4.7|user2
+The Godfather (1972)|4.9|user3
+The Godfather (1972)|4.6|user4
+Schindler's List (1993)|4.9|user1
+Schindler's List (1993)|4.8|user2
+Schindler's List (1993)|4.9|user3
+Schindler's List (1993)|4.7|user5
+Pulp Fiction (1994)|4.7|user1
+Pulp Fiction (1994)|4.6|user2
+Pulp Fiction (1994)|4.8|user3
+Pulp Fiction (1994)|4.5|user4
+The Exorcist (1973)|4.2|user1
+The Exorcist (1973)|4.0|user2
+The Exorcist (1973)|4.1|user3
+Halloween (1978)|3.9|user1
+Halloween (1978)|3.8|user2
+Halloween (1978)|4.0|user4
+A Nightmare on Elm Street (1984)|3.8|user1
+A Nightmare on Elm Street (1984)|3.7|user3
+A Nightmare on Elm Street (1984)|3.9|user5
+The Shining (1980)|4.3|user1
+The Shining (1980)|4.1|user2
+The Shining (1980)|4.2|user3
+The Shining (1980)|4.0|user4
+Scream (1996)|3.9|user2
+Scream (1996)|3.8|user3
+Scream (1996)|4.0|user5
+Star Wars (1977)|4.8|user1
+Star Wars (1977)|4.7|user2
+Star Wars (1977)|4.9|user3
+Star Wars (1977)|4.6|user4
+Star Wars (1977)|4.7|user5
+Blade Runner (1982)|4.5|user1
+Blade Runner (1982)|4.3|user2
+Blade Runner (1982)|4.4|user3
+Blade Runner (1982)|4.2|user4
+Alien (1979)|4.6|user1
+Alien (1979)|4.4|user2
+Alien (1979)|4.5|user3
+Alien (1979)|4.3|user5
+The Terminator (1984)|4.4|user1
+The Terminator (1984)|4.2|user2
+The Terminator (1984)|4.3|user3
+Back to the Future (1985)|4.5|user1
+Back to the Future (1985)|4.3|user2
+Back to the Future (1985)|4.4|user3
+Back to the Future (1985)|4.2|user4
+Casablanca (1942)|4.7|user1
+Casablanca (1942)|4.6|user2
+Casablanca (1942)|4.8|user3
+Casablanca (1942)|4.5|user4
+When Harry Met Sally (1989)|4.2|user1
+When Harry Met Sally (1989)|4.0|user2
+When Harry Met Sally (1989)|4.1|user3
+Pretty Woman (1990)|3.9|user1
+Pretty Woman (1990)|3.8|user2
+Pretty Woman (1990)|4.0|user4
+Sleepless in Seattle (1993)|3.8|user1
+Sleepless in Seattle (1993)|3.7|user2
+Sleepless in Seattle (1993)|3.9|user5
+You've Got Mail (1998)|3.7|user1
+You've Got Mail (1998)|3.6|user2
+You've Got Mail (1998)|3.8|user3

@@ -1,0 +1,228 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>coding_doc</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 40px;
+            line-height: 1.6;
+            color: #333;
+        }
+        h1 {
+            color: #2c3e50;
+            border-bottom: 3px solid #3498db;
+            padding-bottom: 10px;
+            text-align: center;
+        }
+        h2 {
+            color: #34495e;
+            margin-top: 30px;
+            border-left: 4px solid #3498db;
+            padding-left: 15px;
+        }
+        pre {
+            background-color: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+            border: 1px solid #e9ecef;
+            font-family: 'Courier New', monospace;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        .content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="content">
+        <div class="header">
+            <h1>Coding Doc</h1>
+        </div>
+        <pre>MOVIE RECOMMENDATION SYSTEM - CODING DOCUMENTATION
+==================================================
+
+This document provides comprehensive documentation for the Movie Recommendation System
+built using AI assistance (Claude AI).
+
+CHATBOT SESSIONS LINKS
+=======================
+
+The entire movie recommendation system was built using Claude AI (Anthropic) through
+the Cursor IDE interface. All code generation, testing, and documentation was
+completed in a single session with Claude AI.
+
+Session Details:
+- AI Assistant: Claude AI (Anthropic)
+- Platform: Cursor IDE
+- Session Type: Interactive coding session
+- Date: Current session
+- All prompts and responses were conducted through the Cursor chat interface
+
+CHATBOTS USED
+=============
+
+Primary AI Assistant: Claude AI (Anthropic)
+- Used for: Complete code generation, testing, documentation, and debugging
+- All aspects of the project were handled by Claude AI including:
+  * Main program architecture and implementation
+  * All five required features implementation
+  * Comprehensive test suite creation
+  * Error handling and edge case management
+  * Documentation generation
+
+CASE-SENSITIVITY HANDLING
+=========================
+
+The system handles case sensitivity as follows:
+
+1. Movie Names: Case-sensitive
+   - Movie names are stored and compared exactly as they appear in the input files
+   - This ensures accurate matching between movies and ratings
+   - Example: "Die Hard (1988)" vs "die hard (1988)" are treated as different movies
+
+2. Genres: Case-insensitive
+   - Genre matching is case-insensitive for user convenience
+   - The system converts both input genre and stored genre to lowercase for comparison
+   - Example: "Action", "action", "ACTION" all match the same genre
+   - Implementation: `if movie_genre.lower() == genre.lower()`
+
+3. User IDs: Case-sensitive
+   - User IDs are stored and compared exactly as they appear
+   - This ensures accurate user identification and rating tracking
+
+4. Ratings: Case-sensitive (numeric values)
+   - Ratings are parsed as floating-point numbers
+   - Invalid non-numeric ratings are filtered out with warnings
+
+The AI automatically handled case sensitivity correctly in the implementation,
+providing appropriate case-insensitive matching for genres while maintaining
+case sensitivity for movie names and user IDs where precision is important.
+
+UNCLEAR CODE/AI EXPLANATIONS
+============================
+
+The following parts of the generated code required clarification from the AI:
+
+1. Data Structure Design
+   - Question: How should we structure the data for efficient lookups?
+   - AI Explanation: Used defaultdict(list) for ratings to automatically create
+     lists for new movies, and separate dictionaries for movies and user ratings
+     to enable efficient bidirectional lookups.
+
+2. Tie-Breaking Logic
+   - Question: How should we handle ties in rankings?
+   - AI Explanation: Implemented secondary sorting by name/genre alphabetically
+     using Python's sort() with a key function that returns a tuple (-rating, name)
+     to sort by rating descending, then name ascending.
+
+3. Error Handling Strategy
+   - Question: How should we handle malformed input data?
+   - AI Explanation: Implemented graceful error handling that skips malformed lines
+     with warnings, allowing the program to continue processing valid data.
+
+4. Recommendation Algorithm
+   - Question: How should we implement the recommendation logic?
+   - AI Explanation: First determine user's preferred genre, then find top movies
+     in that genre that the user hasn't rated yet.
+
+Language Features Not Covered in Class:
+- defaultdict from collections module
+- List comprehensions with conditional logic
+- Exception handling with try/except/finally blocks
+- Type hints (typing module)
+- Temporary file handling (tempfile module)
+
+INPUT DATA ISSUES HANDLING
+==========================
+
+The generated code implements comprehensive measures to handle input data issues:
+
+1. File Existence Validation
+   - Checks if input files exist before attempting to read them
+   - Returns appropriate error messages for missing files
+
+2. Malformed Line Handling
+   - Validates that each line has the correct number of fields (3 for movies, 3 for ratings)
+   - Skips malformed lines with warning messages
+   - Continues processing valid lines
+
+3. Data Type Validation
+   - Validates that ratings are numeric and within valid range (0-5)
+   - Skips non-numeric ratings with warning messages
+   - Skips ratings outside the valid range with warning messages
+
+4. Duplicate Rating Detection
+   - Checks for duplicate ratings from the same user for the same movie
+   - Skips duplicate ratings with warning messages
+   - Maintains data integrity
+
+5. Empty File Handling
+   - Gracefully handles empty input files
+   - Returns empty results without errors
+
+6. Encoding Issues
+   - Uses UTF-8 encoding for file reading
+   - Handles potential encoding issues gracefully
+
+7. Memory Management
+   - Uses efficient data structures to minimize memory usage
+   - Implements proper cleanup of temporary files in tests
+
+ISSUES NOT HANDLED BY AI CODE, FIXES
+====================================
+
+The following issues were identified and fixed during development:
+
+1. Unicode Character Display Issues
+   - Issue: Unicode checkmark characters (✓) caused encoding errors on Windows
+   - Fix: Replaced all Unicode characters with ASCII equivalents (+ and X)
+   - Location: test_movie_recommender.py
+
+2. File Cleanup in Test Suite
+   - Issue: Temporary files were sometimes deleted multiple times causing errors
+   - Fix: Added try/except blocks around file deletion operations
+   - Location: test_movie_recommender.py
+
+3. Test Data Design for Recommendations
+   - Issue: Initial test data didn't provide unrated movies for recommendations
+   - Fix: Modified test data to ensure some users have unrated movies in their preferred genres
+   - Location: test_movie_recommender.py
+
+4. Edge Case in Recommendation Logic
+   - Issue: Users who had rated all movies in their preferred genre couldn't get recommendations
+   - Fix: Added fallback logic to test multiple users and provide informative messages
+   - Location: test_movie_recommender.py
+
+The AI initially generated robust code, but these refinements were necessary to ensure
+compatibility across different systems and comprehensive test coverage.
+
+SUMMARY
+=======
+
+The Movie Recommendation System was successfully built using Claude AI with comprehensive
+features including:
+- Movie popularity ranking
+- Genre-specific movie ranking  
+- Genre popularity ranking
+- User preference analysis
+- Movie recommendations
+- Robust error handling and data validation
+- Comprehensive test suite
+- Case-insensitive genre matching
+- Proper tie-breaking behavior
+
+All code follows Python 3.12+ standards and includes proper documentation,
+error handling, and testing as required by the assignment specifications.
+</pre>
+    </div>
+</body>
+</html>
