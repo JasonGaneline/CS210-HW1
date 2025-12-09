@@ -114,45 +114,68 @@ def load_albums(mydb, albums: List[Tuple[str,str,str,str,List[str]]]) -> Set[Tup
     """Adds albums and their songs, enforcing album/song constraints."""
     rejects = set()
     cur = mydb.cursor()
+    
+    # Store data for insertion later, only if all checks pass.
+    albums_to_insert = []
+    
     try:
         # Input format: (album_title, genre_name, artist_name, release_date, song_titles: List[str])
         for album_title, genre_name, artist_name, release_date, song_titles in albums:
             
             artist_id = _get_or_create_artist(cur, artist_name)
 
-            # Constraint: The combination of album name and artist name is unique.
+            # --- CHECK 1: Duplicate Album ---
             cur.execute("SELECT album_id FROM albums WHERE title = %s AND artist_id = %s", (album_title, artist_id))
             if cur.fetchone():
                 rejects.add((album_title, artist_name))
                 continue
 
-            # Insert/Get Album Genre
-            genre_id = _get_or_create_genre(cur, genre_name)
+            # --- CHECK 2: Song Duplicates ---
+            # If any song in the list is a duplicate, the entire album must be rejected.
+            has_duplicate_song = False
+            for s_title in song_titles:
+                cur.execute("SELECT song_id FROM songs WHERE title = %s AND artist_id = %s", (s_title, artist_id))
+                if cur.fetchone():
+                    has_duplicate_song = True
+                    # If duplicate found, break the song loop and reject the album below.
+                    break 
+            
+            if has_duplicate_song:
+                rejects.add((album_title, artist_name))
+                continue # Skip this album entirely.
+
+            # If all checks pass, gather data for later insertion.
+            albums_to_insert.append({
+                'album_title': album_title, 
+                'genre_name': genre_name, 
+                'artist_id': artist_id,
+                'release_date': release_date,
+                'song_titles': song_titles,
+            })
+
+        # --- PHASE 2: INSERTION (Only if checks passed in Phase 1) ---
+        for album_data in albums_to_insert:
+            artist_id = album_data['artist_id']
+            genre_id = _get_or_create_genre(cur, album_data['genre_name'])
             
             # Insert Album
             cur.execute(
                 "INSERT INTO albums (title, artist_id, release_date, genre_id) VALUES (%s,%s,%s,%s)",
-                (album_title, artist_id, release_date, genre_id)
+                (album_data['album_title'], artist_id, album_data['release_date'], genre_id)
             )
             album_id = cur.lastrowid
 
             # Insert Album Songs and Link Genre
-            for s_title in song_titles:
+            for s_title in album_data['song_titles']:
                 
-                # Constraint: An artist may not record the same song (title) more than once.
-                cur.execute("SELECT song_id FROM songs WHERE title = %s AND artist_id = %s", (s_title, artist_id))
-                if cur.fetchone():
-                    # Skip duplicate song, but continue with the rest of the album
-                    continue
-                    
-                # Insert Song (album_id=album_id, is_single=FALSE)
+                # Insert Song (since we pre-checked for duplicates, this should succeed)
                 cur.execute(
                     "INSERT INTO songs (title, artist_id, album_id, release_date, is_single) VALUES (%s,%s,%s,%s,FALSE)",
-                    (s_title, artist_id, album_id, release_date)
+                    (s_title, artist_id, album_id, album_data['release_date'])
                 )
                 song_id = cur.lastrowid
                 
-                # Link Song to Album Genre (all songs in the album are in the album's genre)
+                # Link Song to Album Genre
                 cur.execute(
                     "INSERT INTO song_genres (song_id, genre_id) VALUES (%s,%s)", 
                     (song_id, genre_id)
@@ -279,13 +302,14 @@ def get_top_song_genres(mydb, n: int) -> List[Tuple[str,int]]:
 def get_album_and_single_artists(mydb) -> Set[str]:
     """
     Returns the names of artists who have both released a song on an album AND a single.
+    (FIXED query logic)
     """
     cur = mydb.cursor()
     cur.execute("""
-        SELECT a.name
+        SELECT DISTINCT a.name
         FROM artists a
-        WHERE EXISTS (SELECT 1 FROM songs s WHERE s.artist_id = a.artist_id AND s.album_id IS NOT NULL)
-          AND EXISTS (SELECT 1 FROM songs s WHERE s.artist_id = a.artist_id AND s.is_single = TRUE)
+        JOIN songs s_album ON a.artist_id = s_album.artist_id AND s_album.album_id IS NOT NULL
+        JOIN songs s_single ON a.artist_id = s_single.artist_id AND s_single.is_single = TRUE
         ORDER BY a.name ASC
     """)
     result = {r[0] for r in cur.fetchall()}
@@ -303,7 +327,7 @@ def get_most_rated_songs(mydb, year_range: Tuple[int,int], n: int) -> List[Tuple
         FROM ratings r
         JOIN songs s ON r.song_id = s.song_id
         JOIN artists a ON s.artist_id = a.artist_id
-        WHERE YEAR(s.release_date) BETWEEN %s AND %s -- Filtering by SONG RELEASE DATE (crucial fix)
+        WHERE YEAR(s.release_date) BETWEEN %s AND %s 
         GROUP BY s.song_id, s.title, a.name
         ORDER BY num_ratings DESC, s.title ASC
         LIMIT %s
@@ -322,7 +346,7 @@ def get_most_engaged_users(mydb, year_range: Tuple[int,int], n: int) -> List[Tup
         SELECT u.username, COUNT(r.song_id) AS total_ratings
         FROM ratings r
         JOIN users u ON r.user_id = u.user_id
-        WHERE YEAR(r.rating_date) BETWEEN %s AND %s -- Filtering by RATING DATE
+        WHERE YEAR(r.rating_date) BETWEEN %s AND %s
         GROUP BY u.user_id, u.username
         ORDER BY total_ratings DESC, u.username ASC
         LIMIT %s
